@@ -1,7 +1,16 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-int _putchar(char c);
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <unistd.h>
+#include <limits.h>
+
+
+
+
+int print_char(char c);
 int _printf(const char *format, ...);
 
 #endif /* MAIN_H */
