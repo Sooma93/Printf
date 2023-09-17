@@ -1,5 +1,6 @@
 #include "main.h"
-
+#include <string.h>
+þ
 /**
  * _printf - printf
  * @format: form
@@ -8,8 +9,8 @@
 int _printf(const char *format, ...)
 {
 	unsigned int i, s_count,  count = 0;
-
 	va_list args;
+
 	va_start(args, format);
 
 	for (i = 0; format[i] != '\0'; i++)
