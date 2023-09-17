@@ -13,4 +13,10 @@
 int print_char(char c);
 int _printf(const char *format, ...);
 
+typedef struct format
+{
+	char *id;
+	int (*f)();
+} convert_match;
+
 #endif /* MAIN_H */
