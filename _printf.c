@@ -1,41 +1,61 @@
 #include "main.h"
-#include <string.h>
-þ
-/**
- * _printf - printf
- * @format: form
- * Return: 0
+#include <stdio.h>
+#include <stdarg.h>
+
+/*
+ * _printf - replica of printf function.
+ * @format: Character string to be printed.
+ *
+ * Return: The number of characters to be printed to stdout.
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i, s_count,  count = 0;
 	va_list args;
-
 	va_start(args, format);
 
-	for (i = 0; format[i] != '\0'; i++)
+	int printed_chars;
+
+	printed_chars = 0;
+
+	while (*format != '\0')
 	{
-		if (format[i] != '%')
+		if (*format == '%')
 		{
-			print_char(format[i]);
+			format++;
+
+			switch (*format)
+			{
+				case 'c':
+				{
+					int c = va_arg(args, int);
+					putchar(c);
+					printed_chars++;
+					break;
+				}
+				case 's':
+				{
+					char *s = va_arg(args, char*);
+					fputs(s, stdout);
+					printed_chars += strlen(s);
+					break;
+                }
+				case '%':
+				{
+					putchar('%');
+					printed_chars++;
+					break;
+				}
+			}
 		}
-		else if (format[i] == '%' && format[i + 1] == 'c')
+		else
 		{
-			print_char(va_arg(args, int));
-		i++;
+			putchar(*format);
+			printed_chars++;
 		}
-		else if (format[i + 1] == 's')
-		{
-			s_count = puts(va_arg(args, char *));
-			i++;
-			count += (s_count - 1);
-		}
-		else if (format[i + 1] == '%')
-		{
-			print_char('%');
-		}
-		count += 1;
+		format++;
 	}
+
 	va_end(args);
-	return (count);
+
+	return (printed_chars);
 }

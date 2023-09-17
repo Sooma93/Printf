@@ -12,5 +12,12 @@
 
 int print_char(char c);
 int _printf(const char *format, ...);
+int print_percent(va_list args);
+
+typedef struct format
+{
+	char *id;
+	int (*f)();
+} convert_match;
 
 #endif /* MAIN_H */
