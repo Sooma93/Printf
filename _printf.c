@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
-
+#include <string.h>
 /*
  * _printf - replica of printf function.
  * @format: Character string to be printed.
