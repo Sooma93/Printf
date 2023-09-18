@@ -5,19 +5,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-/**
- * struct print - Struct that maps to a print function
- * @type_arg: Printer identifier
- * @f: A pointer to a printer functions
- *
- * Description: struct that stores pointers to a
- * printer functions.
- */
-typedef struct print
-{
-	char *type_arg;
-	int (*f)(va_list, char *, unsigned int);
-} print_t;
 
 int _printf(const char *format, ...);
 int print_pct(va_list __attribute__((unused)), char *, unsigned int);
