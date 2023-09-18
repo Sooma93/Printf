@@ -1,47 +1,51 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdarg.h>
-#include <string.h>
+
 /**
- * _printf - replica of printf function.
- * @format: Character string to be printed.
- *
- * Return: The number of characters to be printed to stdout.
- */
+* _printf - A replica of C printf function.
+* @format: A string containing all the desired characters
+* Return: The number of characters printed (excluding the null byte used to
+* end output to strings) or -1 if an error occurs.
+*/
 int _printf(const char *format, ...)
 {
+	unsigned int i = 0, len = 0, ibuffer = 0;
+	va_list arguments;
+	int (*function)(va_list, char *, unsigned int);
+	char *buffer;
 
-	unsigned int i, s_count,  count = 0;
-	va_list args;
-
-	if (!format || (format[0] == '%' && format[1] == '\0'))
+	va_start(arguments, format), buffer = malloc(sizeof(char) * 1024);
+	if (!format || !buffer || (format[i] == '%' && !format[i + 1]))
 		return (-1);
-	va_start(args, format);
-
-	for (i = 0; format[i] != '\0'; i++)
+	if (!format[i])
+		return (0);
+	for (i = 0; format && format[i]; i++)
 	{
-		if (format[i] != '%')
+		if (format[i] == '%')
 		{
-			print_char(format[i]);
-		}
-		else if (format[i + 1] == 'c')
-		{
-			print_char(va_arg(args, int));
+			if (format[i + 1] == '\0')
+			{	print_buffer(buffer, ibuffer), free(buffer), va_end(arguments);
+				return (-1);
+			}
+			else
+			{	function = get_print_func(format, i + 1);
+				if (function == NULL)
+				{
+					if (format[i + 1] == ' ' && !format[i + 2])
+						return (-1);
+					handle_buffer(buffer, format[i], ibuffer), len++, i--;
+				}
+				else
+				{	len += function(arguments, buffer, ibuffer);
+					i += ev_print_func(format + i + 1);
+				}
+			}
 			i++;
 		}
-		else if (format[i + 1] == 's')
-		{
-			s_count = putss(va_arg(args, char *));
-			i++;
-			count += (s_count - 1);
-		}
-		else if (format[i + 1] == '%')
-		{
-			print_char('%');
-		}
-		count += 1;
+		else
+			handle_buffer(buffer, format[i], ibuffer), len++;
+		for (ibuffer = len; ibuffer >= 1024; ibuffer -= 1024)
+			;
 	}
-	va_end(args);
-	return (count);
+	print_buffer(buffer, ibuffer), free(buffer), va_end(arguments);
+	return (len);
 }
-
