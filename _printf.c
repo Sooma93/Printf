@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 	{
 	print_char(format[i]);
 	}
-	else if (format[i] == '%' && format[i + 1] == 'c')
+	else if (format[i + 1] == 'c')
 	{
 	print_char(va_arg(args, int));
 	i++;
@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 	i++;
 	count += (s_count - 1);
 	}
-	else if (format[i] == '%' && format[i + 1] == '%')
+	else if (format[i + 1] == '%')
 	{
 	print_char('%');
 	}
