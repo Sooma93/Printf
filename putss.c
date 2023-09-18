@@ -17,4 +17,3 @@ int putss(char *c)
 	}
 	return (count);
 }
-				
