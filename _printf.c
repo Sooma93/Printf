@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 	}
 	else if (format[i + 1] == 's')
 	{
-	s_count = puts(va_arg(args, char *));
+	s_count = putss(va_arg(args, char *));
 	i++;
 	count += (s_count - 1);
 	}
