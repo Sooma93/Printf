@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
-* get_flags - turns flags on if any flag modifier is present.
+* get_flag - turns flags on if any flag modifier is present.
 * @s: string to check for flags.
 * @f: a pointer to struct flags.
 *
 * Return: 1 if flag is present, 0 if not.
 */
-int get_flags(char s, flags_t *f)
+int get_flag(char s, flags_t *f)
 {
 	int i = 0;
 
