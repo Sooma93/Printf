@@ -31,12 +31,12 @@ int print_hex(va_list l, flags_t *f)
 	return (count);
 }
 /**
- * print_hex_big - heaxcidemal in uppercase
+ * print_big_hex - heaxcidemal in uppercase
  * @l: arguments
  * @f: pointer
  * Return: char is printed
  */
-int print_hex_big(va_list l, flags_t *f)
+int print_big_hex(va_list l, flags_t *f)
 {
 	unsigned int num = va_arg(l, unsigned int);
 	char *str = convert(num, 16, 0);
