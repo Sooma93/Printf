@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * print_bigS - Used for non printable characters 
+ * print_bigS - Used for non printable characters
  * @l: arguments list
  * @f: pointer to struct flags
  * Return: Number of characters to be printed
@@ -24,7 +24,7 @@ int print_bigS(va_list l, flags_t *f)
 			res = convert(s[i], 16, 0);
 			if (!res[1])
 				count += _putchar('0');
-			
+
 			count += _puts(res);
 		}
 	else
