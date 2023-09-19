@@ -19,6 +19,7 @@ int (*get_print(char s))(va_list, flags_t *)
 		{'x', print_hex},
 		{'o', print_octal},
 		{'S', print_bigS},
+		{'R', print_rot13},
 		{'r', print_reverse},
 		{'p', print_address}
 	};
