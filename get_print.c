@@ -18,6 +18,7 @@ int (*get_print(char s))(va_list, flags_t *)
 		{'X', print_hex_big},
 		{'x', print_hex},
 		{'o', print_octal},
+		{'S', print_bigS},
 	};
 	int flags = 14;
 
