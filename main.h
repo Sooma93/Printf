@@ -49,4 +49,6 @@ int count_digit(int i);
 
 /* conerter */
 char *convert(unsigned long int num, int base, int lowercase);
+/* print_binary */
+int print_binary(va_list l, flags_t *f);
 #endif
