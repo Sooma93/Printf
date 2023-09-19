@@ -8,14 +8,12 @@
 */
 int print_rot13(va_list l, flags_t *f)
 {
-	char *s;
-	unsigned int i, j;
-	char in[] =  "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	int i, j;
+	char in[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char out[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+	char *s = va_arg(l, char *);
 
 	(void)f;
-	s = va_arg(l, char *);
-
 	for (j = 0; s[j]; j++)
 	{
 		if (s[j] < 'A' || (s[j] > 'Z' && s[j] < 'a') || s[j] > 'z')
@@ -29,5 +27,6 @@ int print_rot13(va_list l, flags_t *f)
 			}
 		}
 	}
-	return (i);
+
+	return (j);
 }
