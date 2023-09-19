@@ -1,12 +1,12 @@
 #include "main.h"
 /**
- * covert - convert num into string
+ * convert - convert num into string
  * @num: input
  * @base: input
  * @lowercase: if need lowercase
  * Return: string
  */
-char *covert(unsigned long int num, int base, int lowercase )
+char *convert(unsigned long int num, int base, int lowercase)
 {
 	static char *rep;
 	static char buffer[50];
