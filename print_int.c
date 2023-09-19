@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * print_int - print int
  * @l: va_list
@@ -18,20 +19,6 @@ int print_int(va_list l, flags_t *f)
 		res++;
 	print_number(n);
 	return (res);
-}
-/**
- * print_unsigned - print un int
- * @l: argument
- * @f: pointer
- * Return: num of char
- */
-int print_unsigned(va_list l, flags_t *f)
-{
-	unsigned int u = va_arg(l, unsigned int);
-	char *str = convert(u, 10, 0);
-
-	(void)f;
-	return (_puts(str));
 }
 
 /**
