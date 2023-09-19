@@ -1,11 +1,11 @@
 #include "main.h"
 /**
-* print_rev - prints a string in reverse order.
+* print_reverse - prints a string in reverse order.
 * @l: list of arguments.
 * @f: pointer to struct flags.
 * Return: number of characters printed.
 */
-int print_rev(va_list l, flags_t *f)
+int print_reverse(va_list l, flags_t *f)
 {
 	int i = 0, j;
 	char *s = va_arg(l, char *);
